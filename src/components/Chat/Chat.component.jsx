@@ -19,7 +19,6 @@ const Chat = ({ dataInstance }) => {
     const interval = setInterval(async () => {
       const result = await receiveNotification(dataInstance);
       if (result) {
-        console.log("receiveNotification ", result);
         const message = result.body.messageData.textMessageData.textMessage;
         const phoneNumber = result.body.senderData.chatId.split("@")[0];
         setMessages((prev) => ({
@@ -52,7 +51,6 @@ const Chat = ({ dataInstance }) => {
     () => accounts.find(({ isActive }) => isActive)?.phone,
     [accounts]
   );
-  console.log(phone);
 
   const addMessage = useCallback(
     async (e) => {
@@ -78,14 +76,21 @@ const Chat = ({ dataInstance }) => {
       <div className="chat_left">
         <Phone setAccounts={setAccounts} />
         {accounts.map(({ id, phone: phoneNumber, isActive }) => (
-          <Account key={id} phone={phoneNumber} isActive={isActive} />
+          <Account
+            key={id}
+            phone={phoneNumber}
+            isActive={isActive}
+            setAccounts={setAccounts}
+          />
         ))}
       </div>
       <div className="chat_right">
-        {phone &&
-          messages[phone]?.map(({ message, isMine }) => (
-            <Message message={message} isMine={isMine} />
-          ))}
+        <div className="chat_right__block">
+          {phone &&
+            messages[phone]?.map(({ message, isMine }) => (
+              <Message key={message} message={message} isMine={isMine} />
+            ))}
+        </div>
         {phone && (
           <NewMessage
             sendMessage={addMessage}

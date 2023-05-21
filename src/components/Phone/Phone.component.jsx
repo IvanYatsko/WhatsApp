@@ -6,10 +6,19 @@ const Phone = ({ setAccounts }) => {
   const [phone, setPhone] = useState("");
 
   const addPhone = useCallback(() => {
-    setAccounts((prev) => [
-      ...prev.map((item) => ({ ...item, isActive: false })),
-      { id: nanoid(8), phone, isActive: true },
-    ]);
+    setAccounts((prev) =>
+      prev.find((item) => item.phone === phone)
+        ? [
+            ...prev.map((item) => ({
+              ...item,
+              isActive: item.phone === phone,
+            })),
+          ]
+        : [
+            ...prev.map((item) => ({ ...item, isActive: false })),
+            { id: nanoid(8), phone, isActive: true },
+          ]
+    );
     setPhone("");
   }, [phone, setAccounts]);
 

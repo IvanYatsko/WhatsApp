@@ -7,7 +7,7 @@ const Main = () => {
 
   return (
     <div className="main">
-      {!dataInstance ? (
+      {dataInstance ? (
         <Chat dataInstance={dataInstance} />
       ) : (
         <Authorization
