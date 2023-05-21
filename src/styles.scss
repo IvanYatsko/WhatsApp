@@ -64,8 +64,22 @@ dd {
       background-color: #f0f2f5;
     }
   }
-  &_message {
+  &_new-message {
     position: absolute;
     bottom: 0;
+    z-index: 10;
+  }
+  &_message {
+    display: flex;
+    width: 70%;
+    background-color: #d9fdd3;
+    border-radius: 7.5px;
+    padding: 15px;
+    margin: 5px;
+
+    &__mine {
+      justify-content: end;
+      margin-left: auto;
+    }
   }
 }

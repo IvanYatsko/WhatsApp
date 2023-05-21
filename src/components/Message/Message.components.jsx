@@ -1,15 +1,7 @@
-import { Input } from "antd";
-
-const { TextArea } = Input;
-
-const Message = ({ addMessage }) => (
-  <TextArea
-    className="chat_message"
-    rows={4}
-    placeholder="Enter the message"
-    maxLength={6}
-    onPressEnter={addMessage}
-  />
+const Message = ({ message, isMine }) => (
+  <div className={`chat_message ${isMine ? "chat_message__mine" : ""}`}>
+    {message}
+  </div>
 );
 
 export default Message;

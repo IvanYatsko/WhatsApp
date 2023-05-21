@@ -9,9 +9,7 @@ const onFinishFailed = (errorInfo) => {
 const Authorization = ({ setDataInstance }) => {
   const onFinish = useCallback(
     async (values) => {
-      console.log("Success:", values);
       const authorize = await authorized(values);
-      console.log("authorize ", authorize);
       authorize && setDataInstance(values);
     },
     [setDataInstance]
