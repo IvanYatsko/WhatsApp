@@ -7,7 +7,6 @@ const AddMessage = ({ sendMessage, value, setValue }) => (
     className="chat_new-message"
     rows={4}
     placeholder="Enter the message"
-    maxLength={6}
     value={value}
     onChange={(e) => setValue(e.target.value)}
     onPressEnter={sendMessage}

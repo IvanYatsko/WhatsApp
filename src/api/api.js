@@ -1,8 +1,6 @@
 import { HOST } from "./api.config";
 
 export async function authorized({ idInstance, apiTokenInstance }) {
-  // idInstance = "1101823121";
-  // apiTokenInstance = "c827789af01c433389b1f3ce2840785358d79595d9ac4f6da0";
   try {
     const response = await fetch(
       `${HOST}/waInstance${idInstance}/getStateInstance/${apiTokenInstance}`
